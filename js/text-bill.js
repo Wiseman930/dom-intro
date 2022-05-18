@@ -20,24 +20,18 @@ var roundedBillTot1 = (clicks + clicks2).toFixed(2)
 totalElement.innerHTML = roundedBillTot1;
 if(roundedBillTot1 < 30.00){
     totalElement.classList.remove('warning');
-    rrElement.classList.remove('warning');
-    totElement.classList.remove('danger');
-    rrElement.classList.remove('danger');
+    totalElement.classList.remove('danger');
 
 }
 if(roundedBillTot1 > 30.00) {
     totalElement.classList.add('warning');
-    rrElement.classList.add('warning');
     totalElement.classList.remove('danger');
-    rrElement.classList.remove('danger');
 
 }
 
 if(roundedBillTot1 > 50.00) {
     totalElement.classList.remove('warning');
-    rrElement.classList.remove('warning');
     totalElement.classList.add('danger');
-    rrElement.classList.add('danger');
 
     }
 }

@@ -28,24 +28,20 @@ const RElement = document.querySelector(".total")
     billTotalElement.innerHTML = roundedBillTotal;
     if(roundedBillTotal < 20.00){
         billTotalElement.classList.remove('warning');
-        RElement.classList.remove('warning');
         billTotalElement.classList.remove('danger');
-        RElement.classList.remove('danger');
+
 
     }
     if(roundedBillTotal > 20.00) {
         billTotalElement.classList.add('warning');
-        RElement.classList.add('warning');
         billTotalElement.classList.remove('danger');
-        RElement.classList.remove('danger');
+
 
     }
 
     if(roundedBillTotal > 30.00) {
         billTotalElement.classList.remove('warning');
-        RElement.classList.remove('warning');
         billTotalElement.classList.add('danger');
-        RElement.classList.add('danger');
 
         }
 
