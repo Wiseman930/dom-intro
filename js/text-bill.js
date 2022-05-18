@@ -1,12 +1,46 @@
-// get a reference to the textbox where the bill type is to be entered
 
-//get a reference to the add button
+var clicks = 0;
+var clicks2 = 0;
+const addBillButtono = document.querySelector(".addToBillBtn")
+function onClick() {
+  const totalCallElement = document.querySelector(".callTotalOne")
+  const textBillElement = document.querySelector('.billTypeText')
+  const totalSmsElement = document.querySelector(".smsTotalOne");
+  const totalElement = document.querySelector(".totalOne")
+  var billString = textBillElement.value;
+if (billString === "call"){
+  clicks += 2.75;
+  totalCallElement.innerHTML = clicks.toFixed(2);
+}
+else if (billString === "sms"){
+  clicks2 += 0.75;
+  totalSmsElement.innerHTML = clicks2.toFixed(2);
+}
+var roundedBillTot1 = (clicks + clicks2).toFixed(2)
+totalElement.innerHTML = roundedBillTot1;
+if(roundedBillTot1 < 30.00){
+    totalElement.classList.remove('warning');
+    rrElement.classList.remove('warning');
+    totElement.classList.remove('danger');
+    rrElement.classList.remove('danger');
 
-//create a variable that will keep track of the total bill
+}
+if(roundedBillTot1 > 30.00) {
+    totalElement.classList.add('warning');
+    rrElement.classList.add('warning');
+    totalElement.classList.remove('danger');
+    rrElement.classList.remove('danger');
 
-//add an event listener for when the add button is pressed
+}
 
-//in the event listener check if the value in the bill type textbox is 'sms' or 'call'
-// * add the appropriate value to the running total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen
+if(roundedBillTot1 > 50.00) {
+    totalElement.classList.remove('warning');
+    rrElement.classList.remove('warning');
+    totalElement.classList.add('danger');
+    rrElement.classList.add('danger');
+
+    }
+}
+addBillButtono.addEventListener('click', onClick)
+
+

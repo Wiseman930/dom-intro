@@ -1,12 +1,38 @@
-// get a reference to the sms or call radio buttons
+var clicks3 = 0;
+var clicks4 = 0;
+const addButnElement = document.querySelector('.radioBillAddBtn');
+function onClick() {
+    const billitemRadio = document.querySelector('.billItemTypeRadio:checked')
+    const totElement = document.querySelector(".totalTwo")
+    const totCallElement = document.querySelector(".callTotalTwo")
+    const totSmsElement = document.querySelector(".smsTotalTwo");
+  var bill = billitemRadio.value;
+if (bill === "call"){
+  clicks3 += 2.75;
+  totCallElement.innerHTML = clicks3.toFixed(2);
+}
+if (bill === "sms"){
+  clicks4 += 0.75;
+  totSmsElement.innerHTML = clicks4.toFixed(2);
+}
+var roundedBillTot = (clicks3 + clicks4).toFixed(2)
+totElement.innerHTML = roundedBillTot;
+if(roundedBillTot < 30.00){
+    totElement.classList.remove('warning');
+    totElement.classList.remove('danger');
 
-//get a reference to the add button
+}
+if(roundedBillTot > 30.00) {
+    totElement.classList.add('warning');
+    totElement.classList.remove('danger');
 
-//create a variable that will keep track of the total bill
+}
 
-//add an event listener for when the add button is pressed
+if(roundedBillTot > 50.00) {
+    totElement.classList.remove('warning');
+    totElement.classList.add('danger');
 
-//in the event listener get the value from the billItemTypeRadio radio buttons
-// * add the appropriate value to the running total
-// * add nothing for invalid values that is not 'call' or 'sms'.
-// * display the latest total on the screen
+    }
+}
+addButnElement.addEventListener('click', onClick)
+
