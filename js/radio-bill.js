@@ -1,7 +1,7 @@
 var clicks3 = 0;
 var clicks4 = 0;
-const addButnElement = document.querySelector('.radioBillAddBtn');
-function onClick() {
+const addButnElement = document.querySelector('.radioBillAddBtn')
+function on() {
     const billitemRadio = document.querySelector('.billItemTypeRadio:checked')
     const totElement = document.querySelector(".totalTwo")
     const totCallElement = document.querySelector(".callTotalTwo")
@@ -34,5 +34,5 @@ if(roundedBillTot > 50.00) {
 
     }
 }
-addButnElement.addEventListener('click', onClick)
+addButnElement.addEventListener('click', on)
 
