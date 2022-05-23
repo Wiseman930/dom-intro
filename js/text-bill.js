@@ -9,11 +9,7 @@ function textBill() {
   const totalSmsElement = document.querySelector(".smsTotalOne");
   const totalElement = document.querySelector(".totalOne")
   var billString = textBillElement.value;
-  if (roundedBillTot1 > 50.00) {
-    textCallTotal += 0.00;
-    textSmsTotal += 0.00;
-
-  } else if (billString === "call" || billString === "CALL" || billString === "Call") {
+ if (billString === "call" || billString === "CALL" || billString === "Call") {
     textCallTotal += 2.75;
     totalCallElement.innerHTML = textCallTotal.toFixed(2);
   } else if (billString === "sms" || billString === "SMS" || billString === "Sms") {

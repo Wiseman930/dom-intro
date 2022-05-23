@@ -10,10 +10,10 @@ function radioBill() {
   const totSmsElement = document.querySelector(".smsTotalTwo");
   var bill = billitemRadio.value;
 
-  if (bill === "call" && roundedBillTot < 50.00) {
+  if (bill === "call" ) {
     radioCallTotal += 2.75;
     totCallElement.innerHTML = radioCallTotal.toFixed(2);
-  } else if (bill === "sms" && roundedBillTot < 50.00) {
+  } else if (bill === "sms" ) {
     radioSmsTotal += 0.75;
     totSmsElement.innerHTML = radioSmsTotal.toFixed(2);
   }
