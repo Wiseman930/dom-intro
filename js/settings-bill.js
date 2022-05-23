@@ -26,60 +26,66 @@ const callSettingElement = document.querySelector(".callCostSetting");
 const smsSettingElement = document.querySelector(".smsCostSetting");
 const warningSettingElement = document.querySelector('.warningLevelSetting');
 const criticalLevelSetting = document.querySelector(".criticalLevelSetting");
-function onClickid() {
+
+function settingsBill() {
 
 
-    Num1 = Number(smsSettingElement.value);
+  smsCost = Number(smsSettingElement.value);
 
-    Num2 = Number(callSettingElement.value);
+  callCost = Number(callSettingElement.value);
 
-    warn = Number(warningSettingElement.value);
+  warning = Number(warningSettingElement.value);
 
-    crit = Number(criticalLevelSetting.value);
+  critical = Number(criticalLevelSetting.value);
 
 }
-updateButnElement.addEventListener('click', onClickid)
-onClickid();
+updateButnElement.addEventListener('click', settingsBill)
+settingsBill();
 
 
 
-var clicks5 = 0;
-var clicks6 = 0;
+var callTotal = 0;
+var smsTotal = 0;
+var roundedsetBillTot = 0;
 const addsetButnElement = document.querySelector('.settingsBillT')
-function Click() {
-    const billsetitemRadio = document.querySelector('.billItemTypeWithSettings:checked')
-    const totsetElement = document.querySelector(".totalSettings")
-    const totsetCallElement = document.querySelector(".callTotalSettings")
-    const totsetSmsElement = document.querySelector(".smsTotalSettings")
+
+function Billtype() {
+  const billsetitemRadio = document.querySelector('.billItemTypeWithSettings:checked')
+  const totsetElement = document.querySelector(".totalSettings")
+  const totsetCallElement = document.querySelector(".callTotalSettings")
+  const totsetSmsElement = document.querySelector(".smsTotalSettings")
   var billset = billsetitemRadio.value;
-if (billset === "call"){
-  clicks5 += Num2;
-  totsetCallElement.innerHTML = clicks5.toFixed(2);
-}
-if (billset === "sms"){
-  clicks6 += Num1;
-  totsetSmsElement.innerHTML = clicks6.toFixed(2);
-}
-var roundedsetBillTot = (clicks5 + clicks6).toFixed(2)
-totsetElement.innerHTML = roundedsetBillTot;
-if(roundedsetBillTot < warn){
+  if (roundedsetBillTot > critical) {
+    callTotal += 0.00;
+    smsTotal += 0.00;
+
+  } else if (billset === "call") {
+    callTotal += callCost;
+    totsetCallElement.innerHTML = callTotal.toFixed(2);
+  } else if (billset === "sms") {
+    smsTotal += smsCost;
+    totsetSmsElement.innerHTML = smsTotal.toFixed(2);
+  }
+  roundedsetBillTot = (callTotal + smsTotal).toFixed(2)
+  totsetElement.innerHTML = roundedsetBillTot;
+  if (roundedsetBillTot < warning) {
     totsetElement.classList.remove('warning');
     totsetElement.classList.remove('danger');
 
-}
-if(roundedsetBillTot > warn) {
+  }
+  if (roundedsetBillTot > warning) {
     totsetElement.classList.add('warning');
     totsetElement.classList.remove('danger');
 
-}
+  }
 
-if(roundedsetBillTot > crit) {
+  if (roundedsetBillTot > critical) {
     totsetElement.classList.remove('warning');
     totsetElement.classList.add('danger');
 
-    }
+  }
 }
-addsetButnElement.addEventListener('click', Click)
+addsetButnElement.addEventListener('click', Billtype)
 
 
 
