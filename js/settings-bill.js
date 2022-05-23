@@ -20,7 +20,7 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
-
+const totsetElement = document.querySelector(".totalSettings")
 const updateButnElement = document.querySelector('.updateSettings');
 const callSettingElement = document.querySelector(".callCostSetting");
 const smsSettingElement = document.querySelector(".smsCostSetting");
@@ -37,6 +37,22 @@ function settingsBill() {
   warning = Number(warningSettingElement.value);
 
   critical = Number(criticalLevelSetting.value);
+  if (roundedsetBillTot < warning) {
+    totsetElement.classList.remove('warning');
+    totsetElement.classList.remove('danger');
+
+  }
+  if (roundedsetBillTot > warning) {
+    totsetElement.classList.add('warning');
+    totsetElement.classList.remove('danger');
+
+  }
+
+  if (roundedsetBillTot > critical) {
+    totsetElement.classList.remove('warning');
+    totsetElement.classList.add('danger');
+
+  }
 
 }
 updateButnElement.addEventListener('click', settingsBill)
